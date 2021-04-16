@@ -6,7 +6,8 @@ namespace MarsRover
 	{
 		static void Main(string[] args)
 		{
-			
+			Rover.UpperRightCoordinates = Console.ReadLine();
+			Console.WriteLine(Rover.UpperRightCoordinates);
 		}
 	}
 }
