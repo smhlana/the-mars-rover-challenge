@@ -92,26 +92,28 @@ namespace MarsRover
 			} 
 		}
 
-		public void Explore (string instructions)
+		public string Explore (string instructions)
 		{
 			var sanitizedInstruction = instructions.ToUpper();
 			foreach(var instruction in sanitizedInstruction)
 			{
 				ValidateInstruction(instruction);
 
-				var position = Execute((Control)Enum.Parse(typeof(Control), instruction.ToString()));
+				Execute((Control)Enum.Parse(typeof(Control), instruction.ToString()));
 			}
+
+			return Position;
 		}
 
 		private void ValidateInstruction(char instruction)
 		{
-			if (instruction != 'L' || instruction != 'R' || instruction != 'M')
+			if (instruction != 'L' && instruction != 'R' && instruction != 'M')
 			{
 				throw new FormatException("Invalid instruction. Valid values are L, R and M.");
 			}
 		}
 
-		private string Execute(Control instruction)
+		private void Execute(Control instruction)
 		{
 			switch (instruction)
 			{
@@ -125,10 +127,8 @@ namespace MarsRover
 					Move();
 					break;
 				default:
-					return Position;
+					break;
 			}
-
-			return Position;
 		}
 
 		private void UpdateOrientationLeft(Control instruction)

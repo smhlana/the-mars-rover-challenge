@@ -6,12 +6,13 @@ namespace MarsRover
 	{
 		static void Main(string[] args)
 		{
-			Rover.UpperRightCoordinates = Console.ReadLine();
-			Console.WriteLine(Rover.UpperRightCoordinates);
+			Rover.UpperRightCoordinates = "12 12";
+			Console.WriteLine("Upper right coord: " + Rover.UpperRightCoordinates);
 
-			Rover rover = new Rover();
-			rover.Position = Console.ReadLine();
-			Console.WriteLine(rover.Position);
+			Rover rover = new Rover("5 1 N");
+			Console.WriteLine("Position: " + rover.Position);
+
+			rover.Explore("L");
 		}
 	}
 }

@@ -115,5 +115,22 @@ namespace MarsRoverTests
 			Assert.ThrowsException<System.ArgumentOutOfRangeException>(() => new Rover(position));
 		}
 		#endregion
+
+		#region ExecuteRoverInstructionsRegion
+		[TestMethod]
+		public void Rover_WithValidLeftInstruction_SetsRoverOrientation()
+		{
+			Rover.UpperRightCoordinates = "12 12";
+			var position = "5 1 N";
+			var expected = "5 1 W";
+			var instruction = "L";
+
+			var rover = new Rover(position);
+			rover.Explore(instruction);
+
+			var actual = rover.Position;
+			Assert.AreEqual(expected, actual, "L instruction not executed correctly.");
+		}
+		#endregion
 	}
 }
