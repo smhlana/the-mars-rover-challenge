@@ -17,5 +17,13 @@ namespace MarsRoverTests
 			string actual = Rover.UpperRightCoordinates;
 			Assert.AreEqual(expected, actual, "The set value is not equal to the get value");
 		}
+
+		[TestMethod]
+		public void UpprerRightCoordinates_WhenEitherUpprerRightCoordinatesSetToZero_SHouldThrowArgumentException()
+		{
+			string upperRightCoordinates = "0 15";
+
+			Assert.ThrowsException<System.ArgumentException>(() => Rover.UpperRightCoordinates = upperRightCoordinates);
+		}
 	}
 }
