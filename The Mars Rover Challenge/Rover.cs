@@ -98,6 +98,8 @@ namespace MarsRover
 			foreach(var instruction in sanitizedInstruction)
 			{
 				ValidateInstruction(instruction);
+
+				var position = Execute((Control)Enum.Parse(typeof(Control), instruction.ToString()));
 			}
 		}
 
@@ -106,6 +108,67 @@ namespace MarsRover
 			if (instruction != 'L' || instruction != 'R' || instruction != 'M')
 			{
 				throw new FormatException("Invalid instruction. Valid values are L, R and M.");
+			}
+		}
+
+		private string Execute(Control instruction)
+		{
+			switch (instruction)
+			{
+				case Control.L:
+					UpdateOrientationLeft(instruction);
+					break;
+				case Control.R:
+					UpdateOrientationRight(instruction);
+					break;
+				case Control.M:
+					Move(instruction);
+					break;
+				default:
+					return Position;
+			}
+
+			return Position;
+		}
+
+		private void UpdateOrientationLeft(Control instruction)
+		{
+			if (_position.Orientation == Orientation.N)
+			{
+				_position.Orientation = Orientation.W;
+			}
+			else
+			{
+				var orientation = (int)instruction - 1;
+				_position.Orientation = (Orientation)orientation;
+			}
+		}
+
+		private void UpdateOrientationRight(Control instruction)
+		{
+			if (_position.Orientation == Orientation.W)
+			{
+				_position.Orientation = Orientation.N;
+			}
+			else
+			{
+				var orientation = (int)instruction + 1;
+				_position.Orientation = (Orientation)orientation;
+			}
+		}
+
+		private void Move(Control instruction)
+		{
+			switch (_position.Orientation)
+			{
+				case Orientation.N:
+					break;
+				case Orientation.E:
+					break;
+				case Orientation.S:
+					break;
+				case Orientation.W:
+					break;
 			}
 		}
 	}
