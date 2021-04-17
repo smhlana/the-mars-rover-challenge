@@ -228,6 +228,28 @@ namespace MarsRoverTests
 			var actual = rover.Position;
 			Assert.AreEqual(expected, actual, "RM instruction not executed correctly.");
 		}
+
+		[TestMethod]
+		public void Rover_WithNullInstructionParameter_ShouldThrowArgumentNullException()
+		{
+			Rover.UpperRightCoordinates = "12 12";
+			var position = "5 5 N";
+			string instruction = null;
+			var rover = new Rover(position);
+
+			Assert.ThrowsException<System.ArgumentNullException>(() => rover.Explore(instruction));
+		}
+
+		[TestMethod]
+		public void Rover_WithEmptyInstructionParameter_ShouldThrowArgumentNullException()
+		{
+			Rover.UpperRightCoordinates = "12 12";
+			var position = "5 5 N";
+			string instruction = string.Empty;
+			var rover = new Rover(position);
+
+			Assert.ThrowsException<System.ArgumentNullException>(() => rover.Explore(instruction));
+		}
 		#endregion
 	}
 }

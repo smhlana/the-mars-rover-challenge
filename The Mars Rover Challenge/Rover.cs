@@ -94,6 +94,11 @@ namespace MarsRover
 
 		public string Explore (string instructions)
 		{
+			if (string.IsNullOrEmpty(instructions))
+			{
+				throw new ArgumentNullException("Invalid instruction. Method does not accept null or empty instruction. Valid values are L, R and M.");
+			}
+
 			var sanitizedInstruction = instructions.ToUpper();
 			foreach(var instruction in sanitizedInstruction)
 			{
