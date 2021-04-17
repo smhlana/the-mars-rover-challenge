@@ -11,7 +11,6 @@ namespace MarsRover
 			Position = position;
 		}
 
-		private static char[] _charsToTrim = { ' ', ',' };
 		public enum Control
 		{
 			L = 0,	// Letf
@@ -54,7 +53,7 @@ namespace MarsRover
 
 				if (orientation != 'N' && orientation != 'E' && orientation != 'S' && orientation != 'W')
 				{
-					throw new FormatException("Invalid orientation. Valid values are N, E, S or W.");
+					throw new FormatException("Invalid orientation. Valid values are N, E, S and W.");
 				}
 				
 				_position = new Position
@@ -91,6 +90,23 @@ namespace MarsRover
 
 				_upperRightCoordinates = new Point(x, y); 
 			} 
+		}
+
+		public void Explore (string instructions)
+		{
+			var sanitizedInstruction = instructions.ToUpper();
+			foreach(var instruction in sanitizedInstruction)
+			{
+				ValidateInstruction(instruction);
+			}
+		}
+
+		private void ValidateInstruction(char instruction)
+		{
+			if (instruction != 'L' || instruction != 'R' || instruction != 'M')
+			{
+				throw new FormatException("Invalid instruction. Valid values are L, R and M.");
+			}
 		}
 	}
 }
