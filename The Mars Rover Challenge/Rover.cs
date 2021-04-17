@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace MarsRover
 {
-	class Rover
+	public class Rover
 	{
 		private static char[] _charsToTrim = { ' ', ',' };
 		public enum Control
@@ -24,9 +24,17 @@ namespace MarsRover
 			}
 			set 
 			{
-				var coocrdinates = value.Replace(" ", "");
-				int x = int.Parse(coocrdinates.Substring(0, 1));
-				int y = int.Parse(coocrdinates.Substring(1, 1));
+				string coordinates = value.Trim(' ');
+				int indexOfSeparator = coordinates.IndexOf(' ');
+
+				int x = int.Parse(coordinates.Substring(0, indexOfSeparator));
+				int y = int.Parse(coordinates.Substring(indexOfSeparator + 1));
+
+				if (x == 0 || y == 0)
+				{
+					throw new ArgumentException("X or Y value for upper right coordinates cannot be zero.");
+				}
+
 				_upperRightCoordinates = new Point(x, y); 
 			} 
 		}
