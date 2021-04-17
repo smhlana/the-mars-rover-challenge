@@ -140,7 +140,7 @@ namespace MarsRoverTests
 		}
 
 		[TestMethod]
-		public void Rover_WithValidLeftInstruction_SetsRoverOrientation()
+		public void Rover_LeftInstruction_SetsRoverOrientation()
 		{
 			Rover.UpperRightCoordinates = "12 12";
 			var position = "5 1 N";
@@ -155,7 +155,7 @@ namespace MarsRoverTests
 		}
 
 		[TestMethod]
-		public void Rover_WithValidRightInstruction_SetsRoverOrientation()
+		public void Rover_RightInstruction_SetsRoverOrientation()
 		{
 			Rover.UpperRightCoordinates = "12 12";
 			var position = "5 1 N";
@@ -166,7 +166,7 @@ namespace MarsRoverTests
 			rover.Explore(instruction);
 
 			var actual = rover.Position;
-			Assert.AreEqual(expected, actual, "L instruction not executed correctly.");
+			Assert.AreEqual(expected, actual, "R instruction not executed correctly.");
 		}
 
 		[TestMethod]
@@ -181,7 +181,22 @@ namespace MarsRoverTests
 			rover.Explore(instruction);
 
 			var actual = rover.Position;
-			Assert.AreEqual(expected, actual, "L instruction not executed correctly.");
+			Assert.AreEqual(expected, actual, "LM instruction not executed correctly.");
+		}
+
+		[TestMethod]
+		public void Rover_MoveLeftInstructionOnLeftBound_NoChangeInCoordinates()
+		{
+			Rover.UpperRightCoordinates = "12 12";
+			var position = "0 1 N";
+			var expected = "0 1 W";
+			var instruction = "LM";
+
+			var rover = new Rover(position);
+			rover.Explore(instruction);
+
+			var actual = rover.Position;
+			Assert.AreEqual(expected, actual, "LM instruction not executed correctly.");
 		}
 		#endregion
 	}
