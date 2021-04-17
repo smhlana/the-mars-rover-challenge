@@ -8,7 +8,7 @@ namespace MarsRoverTests
 	{
 		#region SetPlateauBoundsRegion
 		[TestMethod]
-		public void UpprerRightCoordinates_WithValidInput_SetsCoordinates()
+		public void UpperRightCoordinates_WithValidInput_SetsCoordinates()
 		{
 			string upperRightCoordinates = "10 15";
 			string expected = "10 15";
@@ -20,12 +20,28 @@ namespace MarsRoverTests
 		}
 
 		[TestMethod]
-		public void UpprerRightCoordinates_WithUpprerRightCoordinatesLessThanOne_ShouldThrowArgumentOutOfRangeException()
+		public void UpperRightCoordinates_WithUpperRightCoordinatesLessThanOne_ShouldThrowArgumentOutOfRangeException()
 		{
 			string upperRightCoordinates = "0 15";
 
 			Assert.ThrowsException<System.ArgumentOutOfRangeException>(() => Rover.UpperRightCoordinates = upperRightCoordinates);
-		} 
+		}
+
+		[TestMethod]
+		public void UpperRightCoordinates_UpperRightCoordinatesWithInvalidSyntaxX_ShouldThrowFormatException()
+		{
+			string upperRightCoordinates = "H 15";
+
+			Assert.ThrowsException<System.FormatException>(() => Rover.UpperRightCoordinates = upperRightCoordinates);
+		}
+
+		[TestMethod]
+		public void UpperRightCoordinates_UpperRightCoordinatesWithInvalidSyntaxY_ShouldThrowFormatException()
+		{
+			string upperRightCoordinates = "10 H";
+
+			Assert.ThrowsException<System.FormatException>(() => Rover.UpperRightCoordinates = upperRightCoordinates);
+		}
 		#endregion
 
 		#region SetRoverPositionRegion
@@ -88,7 +104,16 @@ namespace MarsRoverTests
 			string position = "50 10 N";
 
 			Assert.ThrowsException<System.ArgumentOutOfRangeException>(() => new Rover(position));
-		} 
+		}
+
+		[TestMethod]
+		public void Rover_PositionOutOfBoundsY_ShouldThrowArgumentOutOfRangeException()
+		{
+			Rover.UpperRightCoordinates = "12 12";
+			string position = "10 50 N";
+
+			Assert.ThrowsException<System.ArgumentOutOfRangeException>(() => new Rover(position));
+		}
 		#endregion
 	}
 }
