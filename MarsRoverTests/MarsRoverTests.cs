@@ -118,12 +118,22 @@ namespace MarsRoverTests
 
 		#region ExecuteRoverInstructionsRegion
 		[TestMethod]
-		public void Rover_WithInValidInstruction_ShouldThrowFormatException()
+		public void Rover_WithInvalidInstruction_ShouldThrowFormatException()
 		{
 			Rover.UpperRightCoordinates = "12 12";
 			var position = "5 1 N";
-			var expected = "5 1 W";
 			var instruction = "H";
+			var rover = new Rover(position);
+
+			Assert.ThrowsException<System.FormatException>(() => rover.Explore(instruction));
+		}
+
+		[TestMethod]
+		public void Rover_WithMultipleInstructionsContainingInvalidInstruction_ShouldThrowFormatException()
+		{
+			Rover.UpperRightCoordinates = "12 12";
+			var position = "5 5 N";
+			var instruction = "LMLMRTRMLLM";
 			var rover = new Rover(position);
 
 			Assert.ThrowsException<System.FormatException>(() => rover.Explore(instruction));
