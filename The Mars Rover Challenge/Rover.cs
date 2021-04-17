@@ -122,7 +122,7 @@ namespace MarsRover
 					UpdateOrientationRight(instruction);
 					break;
 				case Control.M:
-					Move(instruction);
+					Move();
 					break;
 				default:
 					return Position;
@@ -157,18 +157,64 @@ namespace MarsRover
 			}
 		}
 
-		private void Move(Control instruction)
+		private void Move()
 		{
 			switch (_position.Orientation)
 			{
 				case Orientation.N:
+					MoveNorth();
 					break;
 				case Orientation.E:
+					MoveEast();
 					break;
 				case Orientation.S:
+					SouthDown();
 					break;
 				case Orientation.W:
+					MoveWest();
 					break;
+			}
+		}
+
+		private void MoveNorth()
+		{
+			var currentCoordinates = _position.Coordinates;
+			var newYCoordinate = currentCoordinates.Y + 1;
+			if (newYCoordinate <= _upperRightCoordinates.Y)
+			{
+				_position.Coordinates = new Point(currentCoordinates.X, newYCoordinate);
+			}
+			
+		}
+
+		private void MoveEast()
+		{
+			var currentCoordinates = _position.Coordinates;
+			var newXCoordinate = currentCoordinates.X + 1;
+			if (newXCoordinate <= _upperRightCoordinates.X)
+			{
+				_position.Coordinates = new Point(newXCoordinate, currentCoordinates.Y);
+			}
+
+		}
+
+		private void SouthDown()
+		{
+			var currentCoordinates = _position.Coordinates;
+			var newYCoordinate = currentCoordinates.Y - 1;
+			if (newYCoordinate >= 0)
+			{
+				_position.Coordinates = new Point(currentCoordinates.X, newYCoordinate);
+			}
+		}
+
+		private void MoveWest()
+		{
+			var currentCoordinates = _position.Coordinates;
+			var newXCoordinate = currentCoordinates.X - 1;
+			if (newXCoordinate >= 0)
+			{
+				_position.Coordinates = new Point(newXCoordinate, currentCoordinates.Y);
 			}
 		}
 	}
