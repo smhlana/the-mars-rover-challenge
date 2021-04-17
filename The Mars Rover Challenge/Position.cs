@@ -2,7 +2,7 @@
 
 namespace MarsRover
 {
-	class Position
+	public class Position
 	{
 		public Point Coordinates { get; set; }
 		public char Direction { get; set; }
