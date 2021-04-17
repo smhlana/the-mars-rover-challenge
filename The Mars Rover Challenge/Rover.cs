@@ -35,16 +35,16 @@ namespace MarsRover
 			}
 			set 
 			{
-				string position = value.Trim(' ');
+				var position = value.Trim(' ');
 				var positionArray = position.Split(' ');
 				if (positionArray.Length != 3)
 				{
 					throw new ArgumentException("Invalid number of arguments. Supply X, Y and orientation values in the form 'X Y O'.");
 				}
 
-				int x = int.Parse(positionArray[0]);
-				int y = int.Parse(positionArray[1]);
-				char orientation = positionArray[2].ToUpper()[0];
+				var x = int.Parse(positionArray[0]);
+				var y = int.Parse(positionArray[1]);
+				var orientation = positionArray[2].ToUpper()[0];
 
 				if (x < 0 || x > _upperRightCoordinates.X || y < 0 || y > _upperRightCoordinates.Y)
 				{
@@ -73,15 +73,15 @@ namespace MarsRover
 			}
 			set 
 			{
-				string coordinates = value.Trim(' ');
+				var coordinates = value.Trim(' ');
 				var coordinatesArray = coordinates.Split(' ');
 				if (coordinatesArray.Length != 2)
 				{
 					throw new ArgumentException("Invalid number of arguments. Supply X and Y values in the form 'X Y'.");
 				}
 
-				int x = int.Parse(coordinatesArray[0]);
-				int y = int.Parse(coordinatesArray[1]);
+				var x = int.Parse(coordinatesArray[0]);
+				var y = int.Parse(coordinatesArray[1]);
 
 				if (x < 1 || y < 1)
 				{

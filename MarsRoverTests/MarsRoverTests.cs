@@ -10,19 +10,19 @@ namespace MarsRoverTests
 		[TestMethod]
 		public void UpperRightCoordinates_WithValidInput_SetsCoordinates()
 		{
-			string upperRightCoordinates = "10 15";
-			string expected = "10 15";
+			var upperRightCoordinates = "10 15";
+			var expected = "10 15";
 
 			Rover.UpperRightCoordinates = upperRightCoordinates;
 
-			string actual = Rover.UpperRightCoordinates;
+			var actual = Rover.UpperRightCoordinates;
 			Assert.AreEqual(expected, actual, "The set value is not equal to the get value");
 		}
 
 		[TestMethod]
 		public void UpperRightCoordinates_WithUpperRightCoordinatesLessThanOne_ShouldThrowArgumentOutOfRangeException()
 		{
-			string upperRightCoordinates = "0 15";
+			var upperRightCoordinates = "0 15";
 
 			Assert.ThrowsException<System.ArgumentOutOfRangeException>(() => Rover.UpperRightCoordinates = upperRightCoordinates);
 		}
@@ -30,7 +30,7 @@ namespace MarsRoverTests
 		[TestMethod]
 		public void UpperRightCoordinates_UpperRightCoordinatesWithInvalidSyntaxX_ShouldThrowFormatException()
 		{
-			string upperRightCoordinates = "H 15";
+			var upperRightCoordinates = "H 15";
 
 			Assert.ThrowsException<System.FormatException>(() => Rover.UpperRightCoordinates = upperRightCoordinates);
 		}
@@ -38,7 +38,7 @@ namespace MarsRoverTests
 		[TestMethod]
 		public void UpperRightCoordinates_UpperRightCoordinatesWithInvalidSyntaxY_ShouldThrowFormatException()
 		{
-			string upperRightCoordinates = "10 H";
+			var upperRightCoordinates = "10 H";
 
 			Assert.ThrowsException<System.FormatException>(() => Rover.UpperRightCoordinates = upperRightCoordinates);
 		}
@@ -48,19 +48,19 @@ namespace MarsRoverTests
 		[TestMethod]
 		public void Rover_WithValidPosition_SetsRoverPosition()
 		{
-			string position = "5 1 N";
-			string expected = "5 1 N";
+			var position = "5 1 N";
+			var expected = "5 1 N";
 
 			var rover = new Rover(position);
 
-			string actual = rover.Position;
+			var actual = rover.Position;
 			Assert.AreEqual(expected, actual, "The set value is not equal to the get value");
 		}
 
 		[TestMethod]
 		public void Rover_WithMissingArgument_ShouldThrowArgumentException()
 		{
-			string position = "5 N";
+			var position = "5 N";
 
 			Assert.ThrowsException<System.ArgumentException>(() => new Rover(position));
 		}
@@ -68,7 +68,7 @@ namespace MarsRoverTests
 		[TestMethod]
 		public void Rover_WithExtraArgument_ShouldThrowArgumentException()
 		{
-			string position = "5 10 6 N";
+			var position = "5 10 6 N";
 
 			Assert.ThrowsException<System.ArgumentException>(() => new Rover(position));
 		}
@@ -76,7 +76,7 @@ namespace MarsRoverTests
 		[TestMethod]
 		public void Rover_PositionWithInvalidSyntaxX_ShouldThrowFormatException()
 		{
-			string position = "H 5 N";
+			var position = "H 5 N";
 
 			Assert.ThrowsException<System.FormatException>(() => new Rover(position));
 		}
@@ -84,7 +84,7 @@ namespace MarsRoverTests
 		[TestMethod]
 		public void Rover_PositionWithInvalidSyntaxY_ShouldThrowFormatException()
 		{
-			string position = "5 H N";
+			var position = "5 H N";
 
 			Assert.ThrowsException<System.FormatException>(() => new Rover(position));
 		}
@@ -92,7 +92,7 @@ namespace MarsRoverTests
 		[TestMethod]
 		public void Rover_PositionWithInvalidSyntaxO_ShouldThrowFormatException()
 		{
-			string position = "5 5 10";
+			var position = "5 5 10";
 
 			Assert.ThrowsException<System.FormatException>(() => new Rover(position));
 		}
@@ -101,7 +101,7 @@ namespace MarsRoverTests
 		public void Rover_PositionOutOfBoundsX_ShouldThrowArgumentOutOfRangeException()
 		{
 			Rover.UpperRightCoordinates = "12 12";
-			string position = "50 10 N";
+			var position = "50 10 N";
 
 			Assert.ThrowsException<System.ArgumentOutOfRangeException>(() => new Rover(position));
 		}
@@ -110,7 +110,7 @@ namespace MarsRoverTests
 		public void Rover_PositionOutOfBoundsY_ShouldThrowArgumentOutOfRangeException()
 		{
 			Rover.UpperRightCoordinates = "12 12";
-			string position = "10 50 N";
+			var position = "10 50 N";
 
 			Assert.ThrowsException<System.ArgumentOutOfRangeException>(() => new Rover(position));
 		}
@@ -245,7 +245,7 @@ namespace MarsRoverTests
 		{
 			Rover.UpperRightCoordinates = "12 12";
 			var position = "5 5 N";
-			string instruction = string.Empty;
+			var instruction = string.Empty;
 			var rover = new Rover(position);
 
 			Assert.ThrowsException<System.ArgumentNullException>(() => rover.Explore(instruction));
