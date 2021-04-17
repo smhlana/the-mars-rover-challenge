@@ -12,7 +12,7 @@ namespace MarsRover
 			Rover rover = new Rover("5 1 N");
 			Console.WriteLine("Position: " + rover.Position);
 
-			rover.Explore("L");
+			rover.Explore("R");
 		}
 	}
 }

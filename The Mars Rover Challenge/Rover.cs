@@ -118,10 +118,10 @@ namespace MarsRover
 			switch (instruction)
 			{
 				case Control.L:
-					UpdateOrientationLeft(instruction);
+					UpdateOrientationLeft();
 					break;
 				case Control.R:
-					UpdateOrientationRight(instruction);
+					UpdateOrientationRight();
 					break;
 				case Control.M:
 					Move();
@@ -131,7 +131,7 @@ namespace MarsRover
 			}
 		}
 
-		private void UpdateOrientationLeft(Control instruction)
+		private void UpdateOrientationLeft()
 		{
 			if (_position.Orientation == Orientation.N)
 			{
@@ -139,12 +139,12 @@ namespace MarsRover
 			}
 			else
 			{
-				var orientation = (int)instruction - 1;
+				var orientation = (int)_position.Orientation - 1;
 				_position.Orientation = (Orientation)orientation;
 			}
 		}
 
-		private void UpdateOrientationRight(Control instruction)
+		private void UpdateOrientationRight()
 		{
 			if (_position.Orientation == Orientation.W)
 			{
@@ -152,7 +152,7 @@ namespace MarsRover
 			}
 			else
 			{
-				var orientation = (int)instruction + 1;
+				var orientation = (int)_position.Orientation + 1;
 				_position.Orientation = (Orientation)orientation;
 			}
 		}
