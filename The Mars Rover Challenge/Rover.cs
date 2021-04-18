@@ -92,6 +92,14 @@ namespace MarsRover
 			} 
 		}
 
+		public static long MaxNumberOfRovers
+		{
+			get
+			{
+				return _upperRightCoordinates.X * _upperRightCoordinates.Y;
+			}
+		}
+
 		public string Explore (string instructions)
 		{
 			if (string.IsNullOrEmpty(instructions))
