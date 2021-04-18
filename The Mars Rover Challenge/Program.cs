@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MarsRoverPlateau;
 
 namespace MarsRover
 {
@@ -7,6 +8,7 @@ namespace MarsRover
 	{
 		static void Main(string[] args)
 		{
+			var plateau = new Plateau();
 			Console.Write("Enter the upper right coordinates: ");
 			Rover.UpperRightCoordinates = Console.ReadLine();
 
@@ -27,9 +29,9 @@ namespace MarsRover
 				listOfRovers.Add(new Rover(position));
 			}
 
-			Console.WriteLine("To control the rovers enter the Rover Id# folowed by a space and then a series of instructions.");
+			Console.WriteLine("\nTo control the rovers enter the Rover Id# folowed by a space and then a series of instructions.");
 			Console.WriteLine("E.g. 1 LMLMRMRRM");
-			Console.WriteLine("To quit enter Q or q.");
+			Console.WriteLine("To quit enter Q or q.\n");
 			while (true)
 			{
 				var command = Console.ReadLine().ToUpper();
@@ -42,23 +44,30 @@ namespace MarsRover
 				var roverId = int.Parse(command.Substring(0, spaceIndex));
 				if (roverId < 1 || roverId > listOfRovers.Count)
 				{
-					Console.WriteLine($"Invalid Rover Id#. Should be between 1 and {listOfRovers.Count}.");
+					Console.WriteLine($"Invalid Rover Id#. Should be between 1 and {listOfRovers.Count}.\n");
 					continue;
 				}
 
 				var instructions = command.Substring(spaceIndex + 1);
 				listOfRovers[roverId - 1].Explore(instructions);
 
-				foreach (var rover in listOfRovers)
+				for (int i = 0; i < listOfRovers.Count; i++)
 				{
-					Console.WriteLine(rover.Position);
+					Console.WriteLine($"Rover Id#{i + 1}: {listOfRovers[i].Position}");
 				}
+
+				Console.WriteLine();
+
+				plateau.Draw(listOfRovers, Rover.UpperRightCoordinates);
 			}
 
-			foreach(var rover in listOfRovers)
+			for (int i = 0; i < listOfRovers.Count; i++)
 			{
-				Console.WriteLine(rover.Position);
+				Console.WriteLine($"Rover Id#{i + 1}: {listOfRovers[i].Position}");
 			}
+
+			Console.WriteLine();
+			plateau.Draw(listOfRovers, Rover.UpperRightCoordinates);
 
 			//Console.WriteLine("Upper right coord: " + Rover.UpperRightCoordinates);
 
