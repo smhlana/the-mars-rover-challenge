@@ -29,6 +29,10 @@ namespace MarsRover
 				listOfRovers.Add(new Rover(position));
 			}
 
+			Console.WriteLine();
+			plateau.Draw(listOfRovers, Rover.UpperRightCoordinates);
+			Console.WriteLine();
+
 			Console.WriteLine("\nTo control the rovers enter the Rover Id# folowed by a space and then a series of instructions.");
 			Console.WriteLine("E.g. 1 LMLMRMRRM");
 			Console.WriteLine("To quit enter Q or q.\n");
