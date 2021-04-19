@@ -12,6 +12,9 @@ Use a command line interface (cmd, PowerShell etc.), follow the steps below:
 ### Step 1. Clone or download this repository
 git clone https://github.com/smhlana/the-mars-rover-challenge
 
+This contains 2 projects, The Mars Rover Challenge which is the solution for the challenge and 
+MarsRoverControllerTests which has the unit tests.
+
 ### Step 2. Install .NET Core API dependencies
     cd the-mars-rover-challenge
     dotnet restore
