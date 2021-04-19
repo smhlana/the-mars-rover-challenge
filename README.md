@@ -16,9 +16,10 @@ git clone https://github.com/smhlana/the-mars-rover-challenge
     dotnet restore
     
 ## Step 4. Run the application
-    Open the The Mars Rover Challenge.sln in Visual Studio 2019 (the-mars-rover-challenge\The Mars Rover Challenge.sln).
+    Open the The Mars Rover Challenge.sln in Visual Studio 2019 
+    (the-mars-rover-challenge\The Mars Rover Challenge.sln).
     Build and run the solution.
     
-    This will open up a console screen with instructions and prompts. Fill in the required data to deploy and control
-    the rover(s).
+    This will open up a console screen with instructions and prompts. Fill in the required data to deploy
+    and control the rover(s).
     
