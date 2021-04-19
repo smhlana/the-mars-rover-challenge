@@ -22,4 +22,18 @@ git clone https://github.com/smhlana/the-mars-rover-challenge
     
     This will open up a console screen with instructions and prompts. Fill in the required data to deploy
     and control the rover(s).
-    
+
+## Thing to note:
+    1. Grid below means plateau. The plateau on the console window is represented as a grid.
+    2. The grid is not marked. Please follow the conventions of a x-y graph - x is horizontal and 
+        increases to the right of the screen, y is vertical and increases to the top of the screen.
+    3. A rover will not move past the set border of the plaetau no matter how many move (M) instructions
+        you issue. 
+    4. The maximum dimensions for the plaetau are 20x30. The way the plateau is presented depends on
+        your screeen size. A plaetau of this size will fit on a 1920x1080 display resolution without
+        being disfigured.
+    5. The maximum number of rovers you can deploy on a plaetau is equal to the maximum number of points
+        you can have on the grid, which is the product of the x and y values of the upper right coordinates.
+    6. The rovers can occupy the same position. If this happens, only the one written onto the grid last
+        will be visible, you will be able to see it when one of them moves to a unique location on the grid.
+
