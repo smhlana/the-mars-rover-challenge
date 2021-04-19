@@ -55,7 +55,7 @@ namespace MarsRover
 				Console.WriteLine($"Rover Id#{i + 1}: {rover.ListOfRovers[i].Position}");
 			}
 			Console.WriteLine();
-			rover.Plateau.Draw(rover.ListOfRovers, Rover.UpperRightCoordinates);
+			rover.Plateau.Draw(rover.ListOfRovers, rover.UpperRightCoordinates);
 		}
 
 		private static void DisplayControlInstructions()

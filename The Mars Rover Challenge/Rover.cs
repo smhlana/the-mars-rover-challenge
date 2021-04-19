@@ -5,10 +5,9 @@ namespace MarsRover
 {
 	public class Rover
 	{
-		public Rover() { }
 		public Rover(string position, string upperRightCoordinates)
 		{
-			UpperRightCoordinates = upperRightCoordinates;
+			SetUpperRightCoordinates(upperRightCoordinates);
 			Position = position;
 		}
 
@@ -65,40 +64,25 @@ namespace MarsRover
 			} 
 		}
 
-		private static Point _upperRightCoordinates;
-		public static string UpperRightCoordinates 
+		private Point _upperRightCoordinates;
+		private void SetUpperRightCoordinates(string upperRightCoordinates) 
 		{
-			get
+			var coordinates = upperRightCoordinates.Trim(' ');
+			var coordinatesArray = coordinates.Split(' ');
+			if (coordinatesArray.Length != 2)
 			{
-				return new string($"{_upperRightCoordinates.X} {_upperRightCoordinates.Y}");
+				throw new ArgumentException("Invalid number of arguments. Supply X and Y values in the form 'X Y'.");
 			}
-			set 
+
+			var x = int.Parse(coordinatesArray[0]);
+			var y = int.Parse(coordinatesArray[1]);
+
+			if (x < 1 || y < 1)
 			{
-				var coordinates = value.Trim(' ');
-				var coordinatesArray = coordinates.Split(' ');
-				if (coordinatesArray.Length != 2)
-				{
-					throw new ArgumentException("Invalid number of arguments. Supply X and Y values in the form 'X Y'.");
-				}
-
-				var x = int.Parse(coordinatesArray[0]);
-				var y = int.Parse(coordinatesArray[1]);
-
-				if (x < 1 || y < 1)
-				{
-					throw new ArgumentOutOfRangeException("X or Y value for upper right coordinates cannot be less than 1.");
-				}
-
-				_upperRightCoordinates = new Point(x, y); 
-			} 
-		}
-
-		public static long MaxNumberOfRovers
-		{
-			get
-			{
-				return _upperRightCoordinates.X * _upperRightCoordinates.Y;
+				throw new ArgumentOutOfRangeException("X or Y value for upper right coordinates cannot be less than 1.");
 			}
+
+			_upperRightCoordinates = new Point(x, y); 
 		}
 
 		public string Explore (string instructions)
