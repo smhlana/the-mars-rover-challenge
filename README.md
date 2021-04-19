@@ -1,21 +1,22 @@
 # The Mars Rover Challenge
+https://code.google.com/archive/p/marsrovertechchallenge/
 
-# Setup
-## Prerequisites
+## Setup
+### Prerequisites
 - Dotnet Core 3.1 SDK must be installed.
 - Visual Studio 2019 must be installed.
 - Git must be installed if you want to clone the repository, otherwise you can downloadt it as a zip.
 
 Use a command line interface (cmd, PowerShell etc.), follow the steps below:
 
-## Step 1. Clone or download this repository
+### Step 1. Clone or download this repository
 git clone https://github.com/smhlana/the-mars-rover-challenge
 
-## Step 2. Install .NET Core API dependencies
+### Step 2. Install .NET Core API dependencies
     cd the-mars-rover-challenge
     dotnet restore
     
-## Step 4. Run the application
+### Step 4. Run the application
     Open the The Mars Rover Challenge.sln in Visual Studio 2019 
     (the-mars-rover-challenge\The Mars Rover Challenge.sln).
     Build and run the solution.
