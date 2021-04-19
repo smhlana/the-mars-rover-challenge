@@ -79,7 +79,7 @@ namespace MarsRoverPlateau
 
 		private string SetPoint(string roverInfo)
 		{
-			return $"[{roverInfo}]";
+			return $"({roverInfo})";
 		}
 	}
 }

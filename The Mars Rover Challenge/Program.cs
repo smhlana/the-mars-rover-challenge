@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using MarsRoverPlateau;
+using MarsRoverController;
 
 namespace MarsRover
 {
@@ -8,36 +7,25 @@ namespace MarsRover
 	{
 		static void Main(string[] args)
 		{
-			var plateau = new Plateau();
+			var rover = new RoverController();
 			Console.Write("Enter the upper right coordinates: ");
-			Rover.UpperRightCoordinates = Console.ReadLine();
+			rover.UpperRightCoordinates = Console.ReadLine();
 
-			Console.Write($"Enter the number of rovers you want to deploy on the plateau (Max = {Rover.MaxNumberOfRovers}): ");
-			var numberOfRovers = int.Parse(Console.ReadLine());
-			if (numberOfRovers < 1 || numberOfRovers > Rover.MaxNumberOfRovers)
-			{
-				throw new ArgumentException($"Number of rovers should be between 0 and {Rover.MaxNumberOfRovers}.");
-			}
+			Console.Write($"Enter the number of rovers you want to deploy on the plateau (Max = {rover.MaxNumberOfRovers}): ");
+			rover.NumberOfRovers = int.Parse(Console.ReadLine());
 
-			var listOfRovers = new List<Rover>();
 			Console.WriteLine("Position format: X Y O");
 			Console.WriteLine("Please take note of the Rover Id#\n");
-			for (int i = 0; i < numberOfRovers; i++)
-			{
-				Console.Write($"Enter the position for Rover Id# {i + 1}: ");
-				var position = Console.ReadLine();
-				listOfRovers.Add(new Rover(position));
-			}
+			rover.DeployRovers();
 
-			Console.WriteLine();
-			plateau.Draw(listOfRovers, Rover.UpperRightCoordinates);
-			Console.WriteLine();
-
-			Console.WriteLine("\nTo control the rovers enter the Rover Id# folowed by a space and then a series of instructions.");
-			Console.WriteLine("E.g. 1 LMLMRMRRM");
-			Console.WriteLine("To quit enter Q or q.\n");
 			while (true)
 			{
+				Console.Clear();
+				Console.WriteLine();
+				rover.Plateau.Draw(rover.ListOfRovers, rover.UpperRightCoordinates);
+				Console.WriteLine();
+				DisplayControlInstructions();
+
 				var command = Console.ReadLine().ToUpper();
 				if (command == "Q")
 				{
@@ -46,39 +34,35 @@ namespace MarsRover
 
 				var spaceIndex = command.IndexOf(" ");
 				var roverId = int.Parse(command.Substring(0, spaceIndex));
-				if (roverId < 1 || roverId > listOfRovers.Count)
+				if (roverId < 1 || roverId > rover.ListOfRovers.Count)
 				{
-					Console.WriteLine($"Invalid Rover Id#. Should be between 1 and {listOfRovers.Count}.\n");
+					Console.WriteLine($"Invalid Rover Id#. Should be between 1 and {rover.ListOfRovers.Count}.\n");
 					continue;
 				}
 
 				var instructions = command.Substring(spaceIndex + 1);
-				listOfRovers[roverId - 1].Explore(instructions);
+				rover.ListOfRovers[roverId - 1].Explore(instructions);
 
-				for (int i = 0; i < listOfRovers.Count; i++)
+				for (int i = 0; i < rover.ListOfRovers.Count; i++)
 				{
-					Console.WriteLine($"Rover Id#{i + 1}: {listOfRovers[i].Position}");
+					Console.WriteLine($"Rover Id#{i + 1}: {rover.ListOfRovers[i].Position}");
 				}
-
-				Console.WriteLine();
-
-				plateau.Draw(listOfRovers, Rover.UpperRightCoordinates);
 			}
 
-			for (int i = 0; i < listOfRovers.Count; i++)
+			Console.Clear();
+			for (int i = 0; i < rover.ListOfRovers.Count; i++)
 			{
-				Console.WriteLine($"Rover Id#{i + 1}: {listOfRovers[i].Position}");
+				Console.WriteLine($"Rover Id#{i + 1}: {rover.ListOfRovers[i].Position}");
 			}
-
 			Console.WriteLine();
-			plateau.Draw(listOfRovers, Rover.UpperRightCoordinates);
+			rover.Plateau.Draw(rover.ListOfRovers, Rover.UpperRightCoordinates);
+		}
 
-			//Console.WriteLine("Upper right coord: " + Rover.UpperRightCoordinates);
-
-			//Rover rover = new Rover("5 1 N");
-			//Console.WriteLine("Position: " + rover.Position);
-
-			//rover.Explore("R");
+		private static void DisplayControlInstructions()
+		{
+			Console.WriteLine("\nTo control the rovers enter the Rover Id# folowed by a space and then a series of instructions.");
+			Console.WriteLine("E.g. 1 LMLMRMRRM");
+			Console.WriteLine("To quit enter Q or q.\n");
 		}
 	}
 }

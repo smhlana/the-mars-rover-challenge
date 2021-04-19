@@ -6,8 +6,9 @@ namespace MarsRover
 	public class Rover
 	{
 		public Rover() { }
-		public Rover(string position)
+		public Rover(string position, string upperRightCoordinates)
 		{
+			UpperRightCoordinates = upperRightCoordinates;
 			Position = position;
 		}
 
@@ -107,7 +108,7 @@ namespace MarsRover
 				throw new ArgumentNullException("Invalid instruction. Method does not accept null or empty instruction. Valid values are L, R and M.");
 			}
 
-			var sanitizedInstruction = instructions.ToUpper();
+			var sanitizedInstruction = instructions.Trim(' ').ToUpper();
 			foreach(var instruction in sanitizedInstruction)
 			{
 				ValidateInstruction(instruction);
