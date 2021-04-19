@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "The Mars Rover Challenge", "The Mars Rover Challenge.csproj", "{31A96D74-F6DB-4D09-8DC7-C2DBE9DE1C1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "The Mars Rover Challenge", "The Mars Rover Challenge.csproj", "{31A96D74-F6DB-4D09-8DC7-C2DBE9DE1C1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRoverTests", "..\MarsRoverTests\MarsRoverTests.csproj", "{A2AA851A-A532-40B5-B8ED-BBA444730A18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarsRoverTests", "..\MarsRoverTests\MarsRoverTests.csproj", "{A2AA851A-A532-40B5-B8ED-BBA444730A18}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarsRoverControllerTests", "..\MarsRoverControllerTests\MarsRoverControllerTests.csproj", "{9D8D1436-1798-438D-A1A0-0AD9235B0DA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A2AA851A-A532-40B5-B8ED-BBA444730A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2AA851A-A532-40B5-B8ED-BBA444730A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2AA851A-A532-40B5-B8ED-BBA444730A18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D8D1436-1798-438D-A1A0-0AD9235B0DA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D8D1436-1798-438D-A1A0-0AD9235B0DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D8D1436-1798-438D-A1A0-0AD9235B0DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D8D1436-1798-438D-A1A0-0AD9235B0DA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

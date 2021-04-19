@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace MarsRoverController
 {
-	class RoverController
+	public class RoverController
 	{
 		public RoverController()
 		{
@@ -63,23 +63,18 @@ namespace MarsRoverController
 				var x = int.Parse(coordinatesArray[0]);
 				var y = int.Parse(coordinatesArray[1]);
 
-				if (x < 1 || y < 1)
+				if (x < 1 || x >20 || y < 1 || y > 30)
 				{
-					throw new ArgumentOutOfRangeException("X or Y value for upper right coordinates cannot be less than 1.");
+					throw new ArgumentOutOfRangeException("Invalid upper right coordinates. X value cannot be less than 1 or greater than 30, Y value cannot be less than 1 or greater than 30.");
 				}
 
 				_upperRightCoordinates = new Point(x, y);
 			}
 		}
 
-		public void DeployRovers()
+		public void Deploy(string position)
 		{
-			for (int i = 0; i < _numberOfRovers; i++)
-			{
-				Console.Write($"Enter the position for Rover Id# {i + 1}: ");
-				var position = Console.ReadLine();
-				ListOfRovers.Add(new Rover(position, UpperRightCoordinates));
-			}
+			ListOfRovers.Add(new Rover(position, UpperRightCoordinates));
 		}
 	}
 }

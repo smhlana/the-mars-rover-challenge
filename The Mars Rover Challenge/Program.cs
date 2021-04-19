@@ -16,7 +16,13 @@ namespace MarsRover
 
 			Console.WriteLine("Position format: X Y O");
 			Console.WriteLine("Please take note of the Rover Id#\n");
-			rover.DeployRovers();
+
+			for (int i = 0; i < rover.NumberOfRovers; i++)
+			{
+				Console.Write($"Enter the position for Rover Id# {i + 1}: ");
+				var position = Console.ReadLine();
+				rover.Deploy(position);
+			}
 
 			while (true)
 			{

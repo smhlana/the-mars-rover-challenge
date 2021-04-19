@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MarsRoverPlateau
 {
-	class Plateau
+	public class Plateau
 	{
 		public void Draw(List<Rover> list, string upperRightCoordinates)
 		{
