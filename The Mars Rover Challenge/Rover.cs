@@ -166,7 +166,7 @@ namespace MarsRover
 					MoveEast();
 					break;
 				case Orientation.S:
-					SouthDown();
+					MoveSouth();
 					break;
 				case Orientation.W:
 					MoveWest();
@@ -196,7 +196,7 @@ namespace MarsRover
 
 		}
 
-		private void SouthDown()
+		private void MoveSouth()
 		{
 			var currentCoordinates = _position.Coordinates;
 			var newYCoordinate = currentCoordinates.Y - 1;
