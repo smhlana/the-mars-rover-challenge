@@ -1,6 +1,6 @@
 # The Mars Rover Challenge
 https://code.google.com/archive/p/marsrovertechchallenge/
-![mar rover challenge](https://user-images.githubusercontent.com/11193045/115358660-2ade4500-a1be-11eb-893d-08a1531dfb84.jpg)
+
 
 ## Setup
 ### Prerequisites
@@ -41,4 +41,6 @@ _MarsRoverControllerTests_ which has the unit tests.
         you can have on the grid, which is the product of the x and y values of the upper right coordinates.
     6. The rovers can occupy the same position. If this happens, only the one written onto the grid last
         will be visible, you will be able to see it when one of them moves to a unique location on the grid.
+        
+![mar rover challenge](https://user-images.githubusercontent.com/11193045/115358660-2ade4500-a1be-11eb-893d-08a1531dfb84.jpg)
 
