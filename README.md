@@ -1,5 +1,6 @@
 # The Mars Rover Challenge
 https://code.google.com/archive/p/marsrovertechchallenge/
+![mar rover challenge](https://user-images.githubusercontent.com/11193045/115358660-2ade4500-a1be-11eb-893d-08a1531dfb84.jpg)
 
 ## Setup
 ### Prerequisites
