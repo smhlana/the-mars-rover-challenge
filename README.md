@@ -6,7 +6,7 @@ https://code.google.com/archive/p/marsrovertechchallenge/
 ### Prerequisites
 - Dotnet Core 3.1 SDK must be installed.
 - Visual Studio 2019 must be installed.
-- Git must be installed if you want to clone the repository, otherwise you can downloadt it as a zip.
+- Git must be installed if you want to clone the repository, otherwise you can download it as a zip.
 
 Use a command line interface (cmd, PowerShell etc.), follow the steps below:
 
@@ -16,7 +16,7 @@ git clone https://github.com/smhlana/the-mars-rover-challenge
 This contains 2 projects, _The Mars Rover Challenge_ which is the solution for the challenge and 
 _MarsRoverControllerTests_ which has the unit tests.
 
-### Step 2. Install .NET Core API dependencies
+### Step 2. Install .NET Core dependencies
     cd the-mars-rover-challenge
     dotnet restore
     
@@ -30,7 +30,7 @@ _MarsRoverControllerTests_ which has the unit tests.
 
 ## Thing to note:
     1. Grid below means plateau. The plateau on the console window is represented as a grid.
-    2. The grid is not marked. Please follow the conventions of a x-y graph - x is horizontal and 
+    2. The grid is not marked. Please follow the conventions of a x-y graph -> x is horizontal and 
         increases to the right of the screen, y is vertical and increases to the top of the screen.
     3. A rover will not move past the set border of the plaetau no matter how many move (M) instructions
         you issue. 
